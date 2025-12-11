@@ -1,5 +1,5 @@
 # 插件核心标识（唯一不可重复，需与插件目录名前缀一致）
-name: "astrbot_plugin_m"
+name: "astrbot_plugin_music_search"
 # 插件作者信息
 author: "czqwq"
 # 插件功能描述（将显示在WebUI插件列表中）
