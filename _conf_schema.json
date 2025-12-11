@@ -35,5 +35,11 @@
         "type": "float",
         "default": 0.9,
         "hint": "1=100%触发AI识别，0=不触发"
+    },
+    "only_respond_when_at": {
+        "description": "是否只在被@时响应",
+        "type": "bool",
+        "default": false,
+        "hint": "开启后仅在机器人被@时才会触发音乐识别功能"
     }
 }

@@ -169,6 +169,8 @@ class MusicPlugin(Star, FileSenderMixin):
         示例3：用户输入“把《小幸运》当文件发过来” → 歌名：小幸运；意图：发文件
         示例4：用户输入“今天天气真好” → 歌名：无歌名；意图：无
         """
+        # 添加一个配置项，控制是否只在被@时响应
+        self.only_respond_when_at = self.config.get("only_respond_when_at", False)
 
     async def judge_music_intent(self, text: str) -> tuple[str, str]:
         """原有LLM意图识别逻辑保留"""
@@ -201,6 +203,10 @@ class MusicPlugin(Star, FileSenderMixin):
     @filter.event_message_type(filter.EventMessageType.ALL)
     async def on_all_message(self, event: AstrMessageEvent):
         """主消息监听逻辑：融合AI识别与优化版文件发送"""
+        # 检查是否只在被@时响应
+        if self.only_respond_when_at and not event.is_at_me():
+            return
+        
         # 概率触发（避免频繁调用LLM）
         if random.random() > self.analysis_prob:
             return
