@@ -204,8 +204,15 @@ class MusicPlugin(Star, FileSenderMixin):
     async def on_all_message(self, event: AstrMessageEvent):
         """主消息监听逻辑：融合AI识别与优化版文件发送"""
         # 检查是否只在被@时响应
-        if self.only_respond_when_at and not event.is_at_me():
-            return
+        if self.only_respond_when_at:
+            # 检查消息链中是否包含@机器人的组件
+            at_me = False
+            for component in event.message_obj.message:
+                if hasattr(component, 'qq') and str(component.qq) == str(event.self_id):
+                    at_me = True
+                    break
+            if not at_me:
+                return
         
         # 概率触发（避免频繁调用LLM）
         if random.random() > self.analysis_prob:
