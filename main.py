@@ -211,7 +211,8 @@ class MusicPlugin(Star, FileSenderMixin):
         
         # 1. LLM识别歌名与意图
         song_name, intent = await self.judge_music_intent(text)
-        if song_name == "无歌名" or intent == "无":
+        # 修复：更严格的判断条件，防止发送"无歌名"相关消息
+        if song_name == "无歌名" or intent == "无" or "无歌名" in song_name or "无" == intent:
             return
         if intent == "LLM未启用":
             await event.send(event.plain_result("未检测到可用的大模型，请先启用LLM~"))
