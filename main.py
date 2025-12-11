@@ -127,10 +127,10 @@ class FileSenderMixin:
 
 @register(
     "astrbot_plugin_music_search",
-    "Mnbqq",
+    "czqwq",
     "AI识别对话中的歌名，自动发送音乐卡片/链接/语音/文件（优化版）",
     "2.1.0",
-    "https://github.com/Mnbqq/astrbot_plugin_music_search",
+    "https://github.com/czqwq/astrbot_plugin_music_search",
 )
 class MusicPlugin(Star, FileSenderMixin):
     def __init__(self, context: Context, config: AstrBotConfig = None):
