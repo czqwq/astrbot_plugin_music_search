@@ -200,20 +200,45 @@ class MusicPlugin(Star, FileSenderMixin):
             logger.error(f"LLM识别失败: {str(e)}")
             return "无歌名", "识别失败"
 
-    @filter.event_message_type(filter.EventMessageType.ALL)
-    async def on_all_message(self, event: AstrMessageEvent):
-        """主消息监听逻辑：融合AI识别与优化版文件发送"""
-        # 检查是否只在被@时响应
-        if self.only_respond_when_at:
-            # 检查消息链中是否包含@机器人的组件
-            at_me = False
+@filter.event_message_type(filter.EventMessageType.ALL)
+async def on_all_message(self, event: AstrMessageEvent):
+    """主消息监听逻辑：融合AI识别与优化版文件发送"""
+    # 检查是否只在被@时响应
+    if self.only_respond_when_at:
+        # 检查消息链中是否包含@机器人的组件
+        at_me = False
+        # 获取机器人自身ID
+        try:
+            self_id = str(event.get_self_id())
+        except AttributeError:
+            # 如果get_self_id方法不存在，尝试其他方式获取self_id
+            self_id = None
+            if hasattr(event, 'self_id'):
+                self_id = str(event.self_id)
+            elif hasattr(event, 'bot') and hasattr(event.bot, 'self_id'):
+                self_id = str(event.bot.self_id)
+
+        if not self_id:
+            # 如果无法获取self_id，记录错误并默认响应所有消息
+            logger.warning("无法获取机器人自身ID，将响应所有消息")
+        else:
             for component in event.message_obj.message:
-                if hasattr(component, 'qq') and str(component.qq) == str(event.self_id):
+                # 检查组件是否有qq属性（@消息）
+                if hasattr(component, 'qq') and str(component.qq) == self_id:
                     at_me = True
                     break
+                # 检查组件是否有user_id属性（某些平台可能用user_id表示@）
+                elif hasattr(component, 'user_id') and str(component.user_id) == self_id:
+                    at_me = True
+                    break
+                # 检查组件是否有at属性（通用at组件）
+                elif hasattr(component, 'at') and str(component.at) == self_id:
+                    at_me = True
+                    break
+
             if not at_me:
                 return
-        
+
         # 概率触发（避免频繁调用LLM）
         if random.random() > self.analysis_prob:
             return
