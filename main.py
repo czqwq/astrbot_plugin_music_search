@@ -11,7 +11,7 @@ from astrbot.core.config.astrbot_config import AstrBotConfig
 from astrbot.core.message.components import Record, File
 from astrbot.core.message.message_event_result import MessageChain
 from astrbot import logger
-from data.plugins.astrbot_plugin_m.draw import draw_lyrics
+from data.plugins.astrbot_plugin_music_search.draw import draw_lyrics
 
 # 歌曲缓存目录
 SAVED_SONGS_DIR = Path(__file__).parent.resolve() / "songs"
@@ -126,11 +126,11 @@ class FileSenderMixin:
             logger.error(f"文件清理失败: {str(e)}")
 
 @register(
-    "astrbot_plugin_m",
+    "astrbot_plugin_music_search",
     "Mnbqq",
     "AI识别对话中的歌名，自动发送音乐卡片/链接/语音/文件（优化版）",
     "2.1.0",
-    "https://github.com/Mnbqq/astrbot_plugin_m",
+    "https://github.com/Mnbqq/astrbot_plugin_music_search",
 )
 class MusicPlugin(Star, FileSenderMixin):
     def __init__(self, context: Context, config: AstrBotConfig = None):

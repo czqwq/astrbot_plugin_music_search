@@ -11,7 +11,7 @@ import hashlib
 from astrbot import logger
 
 
-font_path = Path("data/plugins/astrbot_plugin_m/simhei.ttf")
+font_path = Path("data/plugins/astrbot_plugin_music_search/simhei.ttf")
 
 def draw_lyrics(
     lyrics: str,

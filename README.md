@@ -1,4 +1,4 @@
-![:name](https://count.getloli.com/@astrbot_plugin_m?name=astrbot_plugin_m&theme=minecraft&padding=6&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
+![:name](https://count.getloli.com/@astrbot_plugin_music_search?name=astrbot_plugin_music_search&theme=minecraft&padding=6&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
 
 # AstrBot 智能音乐识别插件
  **本插件由豆包生成** 
@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![AstrBot](https://img.shields.io/badge/AstrBot-3.4%2B-orange.svg)](https://github.com/Soulter/AstrBot)
-[![GitHub](https://img.shields.io/badge/原作者-Zhalslar-blue)](https://github.com/Zhalslar/astrbot_plugin_music)
+[![GitHub](https://img.shields.io/badge/原作者-Zhalslar-blue)](https://github.com/Zhalslar/astrbot_plugin_music_searchusic)
 [![GitHub](https://img.shields.io/badge/作者-Mnbqq-blue)](https://github.com/Mnbqq)
 
 ## 🌟 核心功能
@@ -26,7 +26,7 @@
 
 ## 📋 目录结构
 ```
-astrbot_plugin_m/
+astrbot_plugin_music_search/
 ├── main.py              # 插件核心代码（AI识别+发送逻辑）
 ├── api.py               # 网易云音乐API封装（歌曲搜索/热评/歌词获取）
 ├── metadata.yaml        # 插件元数据（名称/版本/依赖等）
@@ -47,8 +47,8 @@ astrbot_plugin_m/
 
 ### 2. 安装步骤
 1. **下载插件**  
-   将插件目录 `astrbot_plugin_m` 放入 AstrBot 插件目录：  
-   `AstrBot/data/plugins/astrbot_plugin_m/`
+   将插件目录 `astrbot_plugin_music_search` 放入 AstrBot 插件目录：  
+   `AstrBot/data/plugins/astrbot_plugin_music_search/`
 
 2. **安装依赖**  
    插件依赖以下 Python 包，可通过 pip 安装：
@@ -175,12 +175,12 @@ astrbot_plugin_m/
 - 🔧 提交 Pull Request 改进代码
 
 ## 📞 反馈与维护
-- 插件仓库：[https://github.com/Mnbqq/astrbot_plugin_m](https://github.com/Mnbqq/astrbot_plugin_m)
+- 插件仓库：[https://github.com/Mnbqq/astrbot_plugin_music_search](https://github.com/Mnbqq/astrbot_plugin_music_search)
 - 问题反馈：在 GitHub Issues 提交 bug 或功能建议
 - 维护者：Mnbqq
 
 ## 原插件地址
-- 插件仓库：[https://github.com/Zhalslar/astrbot_plugin_music](https://github.com/Zhalslar/astrbot_plugin_music)
+- 插件仓库：[https://github.com/Zhalslar/astrbot_plugin_music_searchusic](https://github.com/Zhalslar/astrbot_plugin_music_searchusic)
 - 作者：Zhalslar
 
 
